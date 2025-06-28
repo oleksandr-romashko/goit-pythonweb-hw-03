@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/storage",
+        "${workspaceFolder}/src/utils"
+    ],
+}
