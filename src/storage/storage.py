@@ -84,19 +84,20 @@ class MessageStorage:
 
     def save_message(self, message_data: dict) -> None:
         """Save message to storage"""
+        # Step 1: Mark receive time first
+        timestamp = datetime.now(timezone.utc).strftime(TIMESTAMP_STORAGE_FORMAT)
 
-        # Step 1: Read messages from the storage
+        # Step 2: Read messages from the storage
         storage_data = self.get_all()
 
-        # Step 2: Modify data by adding new message entry
-        timestamp = datetime.now(timezone.utc).strftime(TIMESTAMP_STORAGE_FORMAT)
+        # Step 3: Modify data by adding new message entry
         storage_data[timestamp] = {
             "username": message_data.get("username", ""),
             "message": message_data.get("message", ""),
         }
 
         try:
-            # Step 3: Overwrite entire storage file content
+            # Step 4: Overwrite entire storage file content
             #         Note: Keep metadata by overwriting file content, not file itself
             with open(self.__file_path, "r+", encoding="utf-8") as fh:
                 # Move file pointer at the beginning before writing (overwrite, not append)
