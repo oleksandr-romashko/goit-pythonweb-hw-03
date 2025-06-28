@@ -6,7 +6,6 @@ authors = [
     {name = "Oleksandr Romashko",email = "alex.rmshk@gmail.com"}
 ]
 license = "LICENSE"
-readme = "Readme.md"
 requires-python = ">=3.10"
 dependencies = [
     "jinja2 (>=3.1.6,<4.0.0)"
