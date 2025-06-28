@@ -15,11 +15,11 @@ This project showcases a minimalist HTTP server implemented in pure Python, usin
   <img src="./assets/project-showcase-image.png" alt="Project display image" width="700">
 </p>
 
-It supports GET and POST requests and features:
+It supports `GET` and `POST` requests and features:
 
-* Basic routing and clean URL handling
-* Static file serving with MIME type detection and path traversal protection
-* Dynamic page rendering with message data
+* Basic routing and clean URL handling (`/message` instead of `/message.html`)
+* Static file serving with MIME type detection (images, css, js, etc.) and path traversal protection
+* Dynamic page rendering with message data (using templates and Jinja2)
 * Message storage using a local JSON file
 * Simple error and redirect handling
 * Logging for server activity
@@ -199,19 +199,19 @@ docker pull rmsh/goit-pythonweb-hw-03
 
 ### Solution Screenshots
 
-Messages shown on the `/read` page:
+Messages shown on the rendered `/read` page:
 
 ![Read page with submitted messages](./assets/results/read-page-with-messages.png)
 
-Empty messages state at `/read` page:
+Empty messages state at rendered `/read` page:
 
 ![Read page with no messages](./assets/results/read-page-empty-state.png)
 
-404 Not Found error page:
+Rendered 404 Not Found error page:
 
 ![404 error page example](./assets/results/404-error-page.png)
 
-500 Internal Server error page:
+Rendered 500 Internal Server error page:
 
 ![500 error page example](./assets/results/500-error-page.png)
 
