@@ -18,5 +18,8 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ./src/storage/data.json:/app/storage/data.json
+      - storage_data:/app/storage/data
     command: python main.py
+
+volumes:
+  storage_data:
