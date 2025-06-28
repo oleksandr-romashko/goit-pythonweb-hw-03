@@ -6,7 +6,7 @@ authors = [
     {name = "Oleksandr Romashko",email = "alex.rmshk@gmail.com"}
 ]
 license = "LICENSE"
-readme = "README.md"
+readme = "Readme.md"
 requires-python = ">=3.10"
 dependencies = [
     "jinja2 (>=3.1.6,<4.0.0)"
@@ -16,3 +16,8 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+packages = [
+    { include = "goit_pythonweb_hw_03"}
+]
