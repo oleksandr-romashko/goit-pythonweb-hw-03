@@ -268,7 +268,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
 def run():
     """Run server"""
-    server_address = ("localhost", 3000)
+    server_address = ("0.0.0.0", 3000)
     httpd = HTTPServer(server_address, HTTPRequestHandler)
     try:
         logging.info("Starting server...")
