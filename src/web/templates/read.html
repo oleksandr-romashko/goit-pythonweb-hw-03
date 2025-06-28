@@ -61,7 +61,7 @@
             </small>
           </div>
           <div class="card-body py-2 px-3">
-            <p class="mb-0 small text-muted">{{ msg.message }}</p>
+            <p class="mb-0 small text-muted">{{ msg.message|replace('\n', '<br>')|safe }}</p>
           </div>
         </div>
         {% endfor %}
