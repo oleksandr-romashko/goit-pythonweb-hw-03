@@ -22,13 +22,21 @@ logging.basicConfig(
 
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
-    _static_dir_path = (Path(__file__).parent / "static").resolve()
-    _storage_file_path = (Path(__file__).parent / "storage" / "data.json").resolve()
-    _message_storage = MessageStorage(_storage_file_path)
+    _storage_file_path = (
+        Path(__file__).parent / "storage" / "data" / "data.json"
+    ).resolve()
+
+    _web_base_dir_path = (Path(__file__).parent / "web").resolve()
+
+    _static_dir_path = (_web_base_dir_path / "static").resolve()
+    _template_dir_path = (_web_base_dir_path / "templates").resolve()
+
     _jinja_env = Environment(
-        loader=FileSystemLoader(_static_dir_path / "templates"),
+        loader=FileSystemLoader(_template_dir_path),
         autoescape=select_autoescape(["html", "xml"]),
     )
+
+    _message_storage = MessageStorage(_storage_file_path)
 
     def do_GET(self) -> None:
         """Handles all GET requests to the server."""
@@ -268,10 +276,13 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
 def run():
     """Run server"""
-    server_address = ("0.0.0.0", 3000)
+    host = "0.0.0.0"
+    port = 3000
+    server_address = (host, port)
     httpd = HTTPServer(server_address, HTTPRequestHandler)
+
     try:
-        logging.info("Starting server...")
+        logging.info("Starting server at http://localhost:%s", port)
         httpd.serve_forever()
     except KeyboardInterrupt:
         httpd.server_close()
