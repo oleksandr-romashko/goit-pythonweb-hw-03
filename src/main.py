@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import logging
 import mimetypes
@@ -11,7 +11,6 @@ from decorators.handle_server_errors import handle_server_errors
 from storage.storage import MessageStorage
 from utils.constants import (
     TIMESTAMP_STORAGE_FORMAT,
-    TIMESTAMP_DISPLAY_FORMAT,
     SUPPORTED_ASSET_PATHS,
     NEW_STATUS_DURATION_SEC,
 )
@@ -193,12 +192,13 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
         messages_list = []
         for timestamp_str, msg in messages_data.items():
             datetime_obj = datetime.strptime(timestamp_str, TIMESTAMP_STORAGE_FORMAT)
-            formatted_timestamp_str = datetime_obj.strftime(TIMESTAMP_DISPLAY_FORMAT)
+            datetime_obj = datetime_obj.replace(tzinfo=timezone.utc)
+            formatted_timestamp_str = datetime_obj.isoformat()
 
             username = msg.get("username") or "Anonymous user"
             message = msg.get("message") or "No message"
 
-            time_diff = datetime.now() - datetime_obj
+            time_diff = datetime.now(timezone.utc) - datetime_obj
             is_new = time_diff.total_seconds() < NEW_STATUS_DURATION_SEC
 
             messages_list.append(

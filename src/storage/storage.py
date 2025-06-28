@@ -6,7 +6,7 @@ file that stores messages along with their timestamps. It includes error
 handling for file access and JSON serialization issues.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 import os
 import logging
@@ -89,7 +89,7 @@ class MessageStorage:
         storage_data = self.get_all()
 
         # Step 2: Modify data by adding new message entry
-        timestamp = datetime.now().strftime(TIMESTAMP_STORAGE_FORMAT)
+        timestamp = datetime.now(timezone.utc).strftime(TIMESTAMP_STORAGE_FORMAT)
         storage_data[timestamp] = {
             "username": message_data.get("username", ""),
             "message": message_data.get("message", ""),

@@ -57,7 +57,7 @@
               {% if msg.is_new %}
               <span class="badge border border-primary text-primary user-select-none pe-none">NEW</span>
               {% endif %}
-              {{ msg.timestamp }}
+              <span class="utc-timestamp" data-utc="{{ msg.timestamp }}"></span>
             </small>
           </div>
           <div class="card-body py-2 px-3">
@@ -73,6 +73,7 @@
       {% endif %}
     </main>
   </div>
+  <script src="./../scripts/convert-timestamps.js" defer></script>
 </body>
 
 </html>

@@ -1,5 +1,4 @@
 TIMESTAMP_STORAGE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
-TIMESTAMP_DISPLAY_FORMAT = "%b %d, %Y %H:%M"
 
 SUPPORTED_ASSET_PATHS = {
     ".css": "styles",
