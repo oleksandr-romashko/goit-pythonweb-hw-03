@@ -12,4 +12,4 @@ SERVER_500_ERROR_MSG = (
     "Something went wrong while processing your request. Please try again later."
 )
 
-NEW_STATUS_DURATION_SEC = 120
+NEW_STATUS_DURATION_SEC = 300
